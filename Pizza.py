@@ -19,7 +19,7 @@ class Pizza:
                 pass
 
         sf.scr.geometry("1366x768")
-        sf.scr.title("PIZZA SAFARI")
+        sf.scr.title("  Lovely's Pizza")
         #sf.scr.resizable(False, False)
         sf.scr.iconbitmap('p.ico')
         sf.mainf1=Frame(sf.scr,height=150,width=1366)
@@ -51,10 +51,10 @@ class Pizza:
         sf.ba=Label(sf.loginf1,image=sf.logo,height=150).place(x=0,y=0)
         sf.home=Button(sf.loginf1,text="Home",command=lambda:sf.main(),bg="#0b1335",cursor="hand2",bd=4,fg="white",font=("cooper black",16))
         sf.home.place(x=800,y=100)
-        sf.adlog=Button(sf.loginf1,text="Administrator Login",command=lambda:sf.Adminlogin(),cursor="hand2",bd=4,bg="#0b1335",fg="white",font=("cooper black",16))
+        sf.adlog=Button(sf.loginf1,text="Vendor's Login",command=lambda:sf.Adminlogin(),cursor="hand2",bd=4,bg="#0b1335",fg="white",font=("cooper black",16))
         sf.adlog.place(x=925,y=100)
-        sf.abt=Button(sf.loginf1,text="About Us",bg="#0b1335",cursor="hand2",bd=4,fg="white",font=("cooper black",16))
-        sf.abt.config(command=lambda:sf.about())
+        sf.abt=Button(sf.loginf1,text="Exit",bg="#0b1335",cursor="hand2",bd=4,fg="white",font=("cooper black",16))
+        sf.abt.config(command=lambda:sf.exit())
         sf.abt.place(x=1210,y=100)
         sf.localtime=time.asctime(time.localtime(time.time()))
         sf.tim=Label(sf.loginf1,text=sf.localtime,fg="white",font=("default",16),bg="#0b1335")
@@ -95,11 +95,13 @@ class Pizza:
         sf.logpass=sf.pasd.get()
         return sf.loguser,sf.logpass
 
-    def about(sf):
-        sf.scr1=Tk()
-        sf.L=Label(sf.scr1,text="NEW PIZZA SHOP")
-        sf.L.pack()
-        sf.scr1.mainloop()
+    def exit(sf):
+        answer=messagebox.askyesno("Hi","Are you sure to exit ?")
+        if answer == 1:
+            sf.scr.destroy()
+        else:
+            return
+    
 #--  page 3------
     def Adminlogin(sf):
         sf.scr.destroy()
@@ -164,9 +166,9 @@ class Pizza:
         sf.ba=Label(sf.regf1,image=sf.logo,height=150).place(x=0,y=0)
         sf.home=Button(sf.regf1,text="Home",command=lambda:sf.main(),bg="#0b1335",cursor="hand2",fg="white",font=("default",16))
         sf.home.place(x=800,y=100)
-        sf.adlog=Button(sf.regf1,text="Administrator Login",command=lambda:sf.Adminlogin(),cursor="hand2",bg="#0b1335",fg="white",font=("default",16))
+        sf.adlog=Button(sf.regf1,text="Vendor's Login",command=lambda:sf.Adminlogin(),cursor="hand2",bg="#0b1335",fg="white",font=("default",16))
         sf.adlog.place(x=950,y=100)
-        sf.abt=Button(sf.regf1,text="About Us",command=lambda:sf.about(),bg="#0b1335",cursor="hand2",fg="white",font=("default",16))
+        sf.abt=Button(sf.regf1,text="Exit",command=lambda:sf.exit(),bg="#0b1335",cursor="hand2",fg="white",font=("default",16))
         sf.abt.place(x=1210,y=100)
         sf.localtime=time.asctime(time.localtime(time.time()))
         sf.tim=Label(sf.regf1,text=sf.localtime,fg="white",font=("default",16),bg="#0b1335")
@@ -806,7 +808,7 @@ class Pizza:
         sf.logo=PhotoImage(file="logo.PNG")
         sf.c.create_image(683,75,image=sf.logo)
         sf.c.create_text(950,80,text="WELCOME",fill="white",font=("default",20))
-        sf.name="  Nitesh Kumar Sharma"
+        sf.name="  TO LOVELY'S PIZZA"
         sf.c.create_text(950,120,text=sf.name,fill="white",font=("default",18))
         sf.out=Button(sf.pizf1,text="Log Out",command=lambda:sf.Login(),bg="#0b1335",cursor="hand2",fg="white",font=("default",16))
         sf.out.place(x=1200,y=100)
